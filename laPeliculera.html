@@ -31,19 +31,23 @@
             let nombreCliente = prompt("Indica tú nombre: ", "");
             if(!validarDatos(nombreCliente) || validarDatos(nombreCliente) === -1){
                 alert("Has introducido un número o has dejado vacio el campo");
-                let nombre = prompt("Indica tú nombre: ", "");
+                nombre = prompt("Indica tú nombre: ", "");
             }
             let edadCliente = prompt("Indicame tú edad: ");
             if(validarDatos(edadCliente) || !validarDatos(edadCliente)){
                 alert("Has introducido letras o has dejado vacio el campo");
-                let edadCliente = prompt("Indicame tú edad: ");
+                edadCliente = prompt("Indicame tú edad: ");
             }
-            let listadoPeliculas = ["Spider Man", "Superman", "Dragon Ball Super", "La era del hielo", "18videos"];
+            const listadoPeliculas = ["Spider Man", "Superman", "Dragon Ball Super", "La era del hielo", "18videos"];
             let nombrePelicula = prompt("Elige una de las siguientes películas: Spider Man, Superman, Dragon Ball Super, La era del hielo, 18videos");
             if(!validarPeliculas(nombrePelicula,listadoPeliculas)){
                 alert("Has ingresado un nombre de película que no está en el listado");
-                let nombrePelicula = prompt("Elige una de las siguientes películas: Spider Man, Superman, Dragon Ball Super, La era del hielo, 18videos");
+                nombrePelicula = prompt("Elige una de las siguientes películas: Spider Man, Superman, Dragon Ball Super, La era del hielo, 18videos");
+            }else if(edadCliente <= 17 && nombrePelicula === '18videos'){
+                alert("No tienes permiso para visualizar está película..");
+                nombrePelicula = prompt("Elige una de las siguientes películas: Spider Man, Superman, Dragon Ball Super, La era del hielo, 18videos");
             }
+            const listadoBebidas = ["Caramelos","Refrescos","Palomitas","Perrito", "Agua"];
 
         } while (validar);
 

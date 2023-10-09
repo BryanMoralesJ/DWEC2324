@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function recorrerArray(texto,ar){
+            for(let i = 0; i < ar.length; i++){
+                console.log(texto + ar[i]);
+            }
+        }
+        const miarray = [];
+        contador = 0;
+        while(contador <= 10){
+            let nombreSocio = prompt("Ingresa el nombre de los socios: ");
+            miarray[contador] = nombreSocio;
+            contador++;
+        }
+        recorrerArray("Nombre socio: ",miarray);
+        console.log("La cantidad de socios que tenemos es: " + miarray.length);
+        miarray.sort();
+        recorrerArray("Mostramos ordenadamente el nombre de los socios:",miarray);
+        const miarrayRevers = miarray.reverse();
+        recorrerArray("Mostramos usando reverse: ",miarrayRevers);
+    </script>
+</body>
+</html>
