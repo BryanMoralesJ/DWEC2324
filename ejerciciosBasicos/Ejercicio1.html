@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+        let primerNumero = parseInt(prompt("Indica el primer número", ""));
+        let segundoNumero = parseInt(prompt("Indica el segundo número", ""));
+        let validar = true;
+            do{
+                if(isNaN(primerNumero) || isNaN(segundoNumero)){
+                    alert("No has introducido números..");
+                    primerNumero = parseInt(prompt("Indica el primer número", ""));
+                    segundoNumero = parseInt(prompt("Indica el segundo número", ""));
+                }else if(primerNumero <= 0 || segundoNumero <= 0){
+                    alert("los números son menores a 0");
+                    primerNumero = parseInt(prompt("Indica el primer número", ""));
+                    segundoNumero = parseInt(prompt("Indica el segundo número", ""));
+                }else{
+                    if(primerNumero > segundoNumero){
+                        alert("El primer número es mayor");
+                        validar = false;
+                    }else if(segundoNumero > primerNumero){
+                        alert("El segundo número es mayor");
+                        validar = false;
+                    }else{
+                        alert("Los números son iguales");
+                        validar = false;
+                }
+            }
+            }while(validar);
+    </script>
+</body>
+</html>

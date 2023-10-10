@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sumaNumeros = 0;
+        let contadorNumeros = 0;
+        let recibirNumero = parseInt(prompt("Ingresa un número: "));
+
+        while (recibirNumero >= 0){
+            sumaNumeros = sumaNumeros + recibirNumero;
+            contadorNumeros++;
+            recibirNumero = parseInt(prompt("Ingresa un número: "));
+        }
+
+        console.log("Suma de todos los números ingresados: " + sumaNumeros);
+        console.log("Media: " + (sumaNumeros/contadorNumeros));
+        console.log(contadorNumeros);
+
+    </script>
+</body>
+</html>
