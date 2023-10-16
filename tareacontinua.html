@@ -18,13 +18,32 @@
 
         //Solicitamos la información con el prompt
 
-        name = prompt("Ingresa el nombre: ","");
-        telf = prompt("Ingresa el teléfono: ","");
-        mail = prompt("Ingresa el email:","");
-        contactos.push({nombre:name,telefono:telf,correo:mail});
-
-        console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
-        console.log(contactos[contactos.length-1].nombre + " / " + contactos[contactos.length-1].telefono + " / " + contactos[contactos.length-1].correo);
+        let opcion = prompt("Ingresa una de las siguientes opciones: \n 1.- Mostrar el primer contacto (primero) \n 2.- Mostrar el último contacto (ultimo) \n 3.- Añadir un nuevo contacto (nuevo)");
+        switch (opcion) {
+            case "primero":
+                console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
+                break;
+            case "ultimo":
+                console.log(contactos[contactos.length-1].nombre + " / " + contactos[contactos.length-1].telefono + " / " + contactos[contactos.length-1].correo);
+                break;
+            case "nuevo":
+                let name = prompt("Ingresa el nombre: ");
+                let tlf = prompt("Ingresa el teléfono: ");
+                let mail = prompt("Ingresa el correo: ");
+                if(name === null){
+                    console.log("NO has introducido el nombre");
+                }else if(tlf === null){
+                    console.log("NO has introducido el teléfono");
+                }else if(mail === null){
+                    console.log("NO has introducido el mail");
+                }else{
+                    contactos.push({nombre:name,telefono:tlf,correo:mail});
+                }
+                break;
+            default:
+                document.write("Introduce una de las 3 opciones...");
+                break;
+        }
 
 
     </script>
