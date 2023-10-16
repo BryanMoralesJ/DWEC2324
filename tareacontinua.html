@@ -8,21 +8,15 @@
 <body>
     
     <script>
-        var nombrePrimero = "Maxwell Wright";
-        var numeroPrimero = "(0191) 719 6495";
-        var correoPrimero = "correoprimero@pruebas.co.uk";
+        const contactos = [
+            {nombre:"Maxwell Wright",telefono:"(0191) 719 6495",correo:"correoprimero@pruebas.co.uk"},
+            {nombre:"Raja Villareal",telefono:"0866 398 2895",correo:"pruebassegundo@sed.com"},
+            {nombre:"Helen Richards",telefono:"0800 1111",correo:"correotercero@convallis.edu"}
+        ];
 
-        var nombreSegundo = "Raja Villareal";
-        var numeroSegundo = "0866 398 2895";
-        var correoSegundo = "pruebassegundo@sed.com";
-
-        var nombreTercero = "Helen Richards";
-        var numeroTercero = "0800 1111";
-        var correoTercero = "correotercero@convallis.edu";
-
-        console.log( nombrePrimero + " / " + numeroPrimero + " / " + correoPrimero);
-        console.log( nombreTercero + " / " + numeroTercero + " / " + correoTercero);
-
+        contactos.push({nombre:"Maisie Haley",telefono:"0913 531 3030",correo:"risus.Quisque@urna.ca"})
+        console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
+        console.log(contactos[3].nombre + " / " + contactos[3].telefono + " / " + contactos[3].correo);
     </script>
 
 </body>
