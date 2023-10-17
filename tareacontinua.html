@@ -16,41 +16,42 @@
 
         contactos.push({nombre:"Maisie Haley",telefono:"0913 531 3030",correo:"risus.Quisque@urna.ca"});
 
+        function showContact(lista,index){
+            if(lista instanceof Array && !isNaN(index)){
+                if(lista.length < index && index >= 0){
+                    console.log(lista[index].nombre + " / " + lista[index].telefono + " / " + lista[index].correo);
+                }
+            }
+        }
+
+        function showAllContacts(lista){
+            if(lista instanceof Array){
+                for(let i = 0; i < lista.length; i++){
+                    console.log(lista[i].nombre + " / " + lista[i].telefono + " / " + lista[i].correo);
+                }
+            }
+        }
+
+        function addNewContact(lista,nombre,telefono,correo){
+            if(lista instanceof Array){
+                if(nombre === null){
+                    console.log("NO has introducido el nombre");
+                }else if(telefono === null){
+                    console.log("NO has introducido el teléfono");
+                }else if(correo === null){
+                    console.log("NO has introducido el mail");
+                }else{
+                    lista.push({nombre:nombre,telefono:telefono,correo:correo});
+                }
+            }
+        }
+
         //Solicitamos la información con el prompt
         let loop = true;
         do {
             let opcion = prompt("Ingresa una de las siguientes opciones: \n 1.- Mostrar el primer contacto (primero) \n 2.- Mostrar el último contacto (ultimo) " + 
             "\n 3.- Mostrar todos los contactos (todos) \n 4.- Añadir un nuevo contacto (nuevo) \n 5.- salir ");
-            switch (opcion) {
-                case "primero":
-                    console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
-                break;
-                case "ultimo":
-                    console.log(contactos[contactos.length-1].nombre + " / " + contactos[contactos.length-1].telefono + " / " + contactos[contactos.length-1].correo);
-                break;
-                case "todos":
-                    for(let i = 0; i < contactos.length; i++){
-                        console.log(contactos[i].nombre + " / " + contactos[i].telefono + " / " + contactos[i].correo);
-                    }
-                break;
-                case "nuevo":
-                    let name = prompt("Ingresa el nombre: ");
-                    let tlf = prompt("Ingresa el teléfono: ");
-                    let mail = prompt("Ingresa el correo: ");
-                    if(name === null){
-                        console.log("NO has introducido el nombre");
-                    }else if(tlf === null){
-                        console.log("NO has introducido el teléfono");
-                    }else if(mail === null){
-                        console.log("NO has introducido el mail");
-                    }else{
-                        contactos.push({nombre:name,telefono:tlf,correo:mail});
-                    }
-                break;
-            default:
-                loop = false;
-                break;
-            }
+
         } while (loop);
     </script>
 
