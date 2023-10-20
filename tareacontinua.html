@@ -51,7 +51,26 @@
         do {
             let opcion = prompt("Ingresa una de las siguientes opciones: \n 1.- Mostrar el primer contacto (primero) \n 2.- Mostrar el último contacto (ultimo) " + 
             "\n 3.- Mostrar todos los contactos (todos) \n 4.- Añadir un nuevo contacto (nuevo) \n 5.- salir ");
-
+            switch(opcion){
+                case "primero":
+                        showContact(contactos,0);
+                    break;
+                case "ultimo":
+                        showContact(contactos,contactos.length-1);
+                    break;
+                case "todos":
+                    showAllContacts(contactos);
+                    break;
+                case "nuevo":
+                        let name = prompt("Ingresa el nombre: ");
+                        let tlf = prompt("Ingresa el teléfono: ");
+                        let mail = prompt("Ingresa el email: ");
+                        addNewContact(contactos,name,tlf,mail);
+                    break;
+                default:
+                    loop = false;
+                break;
+            }
         } while (loop);
     </script>
 
