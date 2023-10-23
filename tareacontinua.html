@@ -13,10 +13,123 @@
             {nombre:"Raja Villareal",telefono:"0866 398 2895",correo:"pruebassegundo@sed.com"},
             {nombre:"Helen Richards",telefono:"0800 1111",correo:"correotercero@convallis.edu"}
         ];
+<<<<<<< HEAD
 
         contactos.push({nombre:"Maisie Haley",telefono:"0913 531 3030",correo:"risus.Quisque@urna.ca"})
         console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
         console.log(contactos[3].nombre + " / " + contactos[3].telefono + " / " + contactos[3].correo);
+=======
+
+        contactos.push({nombre:"Maisie Haley",telefono:"0913 531 3030",correo:"risus.Quisque@urna.ca"});
+
+        function showContact(lista,index){
+            if(lista instanceof Array && !isNaN(index)){
+                if(lista.length < index && index >= 0){
+                    console.log(lista[index].nombre + " / " + lista[index].telefono + " / " + lista[index].correo);
+                }
+            }
+        }
+
+        function showAllContacts(lista){
+            if(lista instanceof Array){
+                for(let i = 0; i < lista.length; i++){
+                    console.log(lista[i].nombre + " / " + lista[i].telefono + " / " + lista[i].correo);
+                }
+            }
+        }
+
+        function addNewContact(lista,nombre,telefono,correo){
+            if(lista instanceof Array){
+                if(nombre === null){
+                    console.log("NO has introducido el nombre");
+                }else if(telefono === null){
+                    console.log("NO has introducido el teléfono");
+                }else if(correo === null){
+                    console.log("NO has introducido el mail");
+                }else{
+                    lista.push({nombre:nombre,telefono:telefono,correo:correo});
+                }
+            }
+        }
+
+        function orderContacts(lista,option){
+            if(lista instanceof Array){
+                if(option === "nombre"){
+                    lista.sort((a,b) => {
+                        const nombreA = a.nombre.toLowerCase();
+                        const nombreB = b.nombre.toLowerCase();
+                        if(nombreA > nombreB){
+                            return 1;
+                        }
+                        if(nombreA < nombreB){
+                            return -1;
+                        }
+                        return 0;
+                    });
+                    console.log(showAllContacts(lista));
+                }else if (option === "telefono"){
+                    lista.sort((a,b) => {
+                        const telefonoA = a.telefono.toLowerCase();
+                        const telefonoB = b.telefono.toLowerCase();
+                        if(telefonoA > telefonoB){
+                            return 1;
+                        }
+                        if(telefonoA < telefonoB){
+                            return -1;
+                        }
+                        return 0;
+                    });
+                    console.log(showAllContacts(lista));
+                }else if(option === "correo"){
+                    lista.sort((a,b) => {
+                        const correoA = a.correo.toLowerCase();
+                        const correoB = b.correo.toLowerCase();
+                        if(correoA > correoB){
+                            return 1;
+                        }
+                        if(correoA < correoB){
+                            return -1;
+                        }
+                        return 0;
+                    });
+                    console.log(showAllContacts(lista));
+                }else{
+                    console.log("Has introducido algo incorrecto");
+                }      
+            }
+        }
+
+        //Solicitamos la información con el prompt
+        let loop = true;
+        do {
+            let opcion = prompt("Ingresa una de las siguientes opciones: \n 1.- Mostrar el primer contacto (primero) \n 2.- Mostrar el último contacto (ultimo) " + 
+            "\n 3.- Mostrar todos los contactos (todos) \n 4.- Añadir un nuevo contacto (nuevo) \n 5.-Ordenar la lista según nombre,teléfono o email (sort) \n 6.- salir ");
+            switch(opcion.toLowerCase()){
+                case "primero":
+                        showContact(contactos,0);
+                    break;
+                case "ultimo":
+                        showContact(contactos,contactos.length-1);
+                    break;
+                case "todos":
+                    showAllContacts(contactos);
+                    break;
+                case "nuevo":
+                        let name = prompt("Ingresa el nombre: ");
+                        let tlf = prompt("Ingresa el teléfono: ");
+                        let mail = prompt("Ingresa el email: ");
+                        addNewContact(contactos,name,tlf,mail);
+                    break;
+                case "sort":
+                    let text = prompt("Ingresa por el que deseas ordenar: \n 1.- Nombre (nombre) \n 2.- Teléfono (telefono) \n 3.- Correo (correo)");
+                    orderContacts(contactos,text.toLowerCase());
+                    break;
+                default:
+                    loop = false;
+                break;
+            }
+        } while (loop);
+>>>>>>> c5bcbf9a330bed9140b19347361c2d0502e2ebf7
     </script>
 
 </body>
