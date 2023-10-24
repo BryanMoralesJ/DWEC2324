@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Esto lo comento pq todavía tengo que intentar mejorar el programa intentare revisarlo está semana.
+        const patronesLimpios = [];
+
+        for(let i = 0; i < patrones.length; i++){
+            patronesLimpios.push(patrones[i].toString().replace(/\//,'').replace(/\/[a-z]*$/,'')); // Con esto sacamos unicamente los patrones sin la expresion regular.
+        }
+
+        */
+        function numeroPatrones(palabra){
+            const patrones = [/00/gi,/101/gi,/ABC/gi,/HO/gi];  // con g conseguimos que se pase a la siguiente secuencia del patron y con la i que ignore mayusculas y minusculas
+            let cont = 0;
+            patrones.forEach(patron => {
+                const aux = palabra.match(patron);
+                if(aux){
+                    cont += aux.length;
+                    //console.log(aux); // Con esto visualizamos en la consola la cantidad de datos que trae como array...
+                }
+            });
+        return cont;
+        }
+
+        let frase = prompt("Indica una frase: ");
+        console.log(numeroPatrones(frase));
+
+    </script>
+</body>
+</html>
