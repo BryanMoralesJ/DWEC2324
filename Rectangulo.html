@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function perimetroRectangulo(a,b){
+            if(a.toString().includes(".") && b.toString().includes(".")){
+                return 2*(Number.parseFloat(a) + Number.parseFloat(b)).toFixed(2);
+            }else{
+                return 2*(parseFloat(a.toFixed(2)) + parseFloat(b.toFixed(2))).toFixed(2);
+            }
+        }
+
+        let num1 = 1.10;
+        let num2 = 2.21;
+        
+        console.log(perimetroRectangulo(num1,num2));
+
+    </script>
+</body>
+</html>
