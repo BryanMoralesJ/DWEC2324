@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    const usuarios = [
+        { id: 1, nombre: 'Juan', edad: 25 },
+        { id: 2, nombre: 'María', edad: 30 },
+        { id: 3, nombre: 'Pedro', edad: 20 },
+        { id: 4, nombre: 'Ana', edad: 35 },
+        { id: 5, nombre: 'Luisa', edad: 22 },
+        { id: 6, nombre: 'Alberto', edad: 19 },
+    ];
+
+    //Filtro usuarios mayores a 18 años
+
+    let mayoresEdad = usuarios.filter(usuario => usuario.edad >= 18);
+
+    console.log(mayoresEdad);
+
+    //Promedio de edades
+
+    let promedio = usuarios.reduce((contador,usuario) => contador += usuario.edad / usuarios.length);
+
+    console.log(promedio);
+
+    </script>
+</body>
+</html>
