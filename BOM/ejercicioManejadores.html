@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="pulsame">PULSAME</button>
+
+    <p id="posicion"></p>
+    <script>
+        /*Realizar una web que contiene un botoón "PULSAME"
+        A)
+            1.- Si es pulsado la página cambia de color (aleatorio)
+            2.- Si se pulsa en cualquier otra parte de la página vuelve al color blanco.
+        B) 
+            3.- Mediante eventos (event) muestre la posición del ratón.
+        */
+
+        const boton = document.getElementById('pulsame');
+        const body = document.body;
+        boton.addEventListener("click",() =>{
+            //Generamos los colores y los añadimos al body
+            let generarPrimerColor = Math.floor(Math.random()*255);
+            let generarSegundoColor = Math.floor(Math.random()*255);
+            let generarTercerColor = Math.floor(Math.random()*255);
+            body.style.backgroundColor = `rgb(${generarPrimerColor},${generarSegundoColor},${generarTercerColor})`;
+        },false);
+
+        document.addEventListener("click",() =>{ // Usamos document ya que body ocupa solo el tamaño del botón.
+            if(event.target.id != "pulsame"){
+            body.style.backgroundColor = "white";
+            }
+        },false);
+
+        const elemento = document.getElementById("posicion");
+        
+        //Volvemos a usar document pq usamos toda la WEB
+        document.addEventListener("mousemove",(event)=>{
+            let x = parseInt(event.clientX);
+            let y = parseInt(event.clientY);
+
+            elemento.innerHTML = "X: " + x + " Y: " + y;
+        },false);
+
+    </script>
+</body>
+</html>

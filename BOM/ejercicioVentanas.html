@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function crearVentana(){
+            miVentana = window.open("","","width=500;height=200");
+        }
+
+        function escribirVentana(){
+            miVentana.document.write("<h1>Hola</h1>");
+        }
+        
+        function cerrarVentana(){
+            miVentana.close();
+        }
+    </script>
+
+    <button onclick="crearVentana()">Crear ventana</button>
+    <button onclick="escribirVentana()">Escribir ventana</button>
+    <button onclick="cerrarVentana()">Cerrar ventana</button>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="ventana"></p>
+    <script>
+        /*
+            SON IMPORTANTES PARA JUANJO
+            name: representa el nombre de la venta
+            outerWidth y outerHeiht: son el ancho y alto de la ventana incluyendo la barra de herramientas de scroll
+            innerWidth e innerHeight: Similar al anterior pero sin incluir la barra de herramientas ni el scroll
+            pageXOffset y pageYOffset: Nos indica donde se encuentra situado el scroll horizontal y vertical
+            screenX y screenY: Permite conocer la distanica de la ventana desde la izquierda y desde arriba respectivamente.
+        */
+
+        /*
+            ESTOS SON MENOS IMPORTANTES PARA JUANJO IGUAL HAY QUE MIRARLOS..
+            frames: devuelve todos los iframe de la venta
+            frameElement: devuelve el frame en el que esta insertada
+            length: devuelve el número de frames que tiene la ventana
+            closed: devuelve un boolean que indica si la ventana esta cerrada
+            opener: devuelve la referencia de la ventana que creo la ventana actual.
+            parent: devuelve la ventana padre de la actual
+            self: devuelve la ventana actual.
+        */
+
+        /*
+            METODOS
+            open: permite abrir una nueva ventana, pudiendo indicar que url se va a cargar dentro. (window.open(URL,name,specs,replace))
+            close: permite cerrar la ventana que ha llamado al metodo
+            resizeBy y resizeTo: redimensiona la ventana a un número de pixeles en relacion con el tamaño que tiene actualmente
+            moveBy y moveTo: Mueve la ventana a un número de píxeles respecto a la posicion actual.
+        */
+
+        window.name = "Mi ventana";
+        let miTexto = "";
+        miTexto += "<br/>Nombre: " + window.name;
+        miTexto += "<br/>Ancho: " + window.outerWidth;
+        miTexto += "<br/>Alto: " + window.outerHeight;
+        miTexto += "<br/>Ancho interno: " + window.innerWidth;
+        miTexto += "<br/>Alto interno: " + window.innerHeight;
+        miTexto += "<br/>Scroll horizontal: " + window.pageXOffset;
+        miTexto += "<br/>Scroll vertical: " + window.pageYOffset;
+        miTexto += "<br/>distancia desde borde izquierdo: " + window.screenX;
+        miTexto += "<br/>distancia desde borde superior: " + window.screenY;
+        document.getElementById("ventana").innerHTML = miTexto;
+
+        function crearVentana(){
+            //miVentana = window.open("https://google.com");
+            miVentana = window.open("","","width=500; height=200"); // Abre la ventana vacia y con el tamaño especificado.
+            miVentana.document.write("<h1> Mi ventana </h1>"); //texto dentro de la ventana
+        }
+
+        function cerrarVentana(){
+            miVentana.close();
+        }
+
+        function redimensionarVentana(){
+            //miVentana.resizeBy(10,10);
+            miVentana.resizeTo(10,300);
+        }
+
+        function enfocar(){
+            miVentana.focus();
+        }
+        function moverVentana(){
+            miVentana.moveBy(10,10);
+        }
+        function imprimir(){
+            miVentana.print(); //imprime la ventana indicada
+        }
+        function saludar(){
+            document.getElementById("saludo").innerHTML += "Buenos días"
+        }
+    </script>
+
+    <p id="saludo"></p>
+    <button onclick="crearVentana()">Crear</button>
+    <button onclick="cerrarVentana()">Cerrar</button>
+    <button onclick="redimensionarVentana()">Redimensionar ventana</button>
+    <button onclick="enfocar()">Focus</button>
+    <button onclick="moverVentana()">Mover ventana</button>
+    <button onclick="imprimir()">Imprimir</button>
+    <button onclick="saludo = setInterval(saludar(),4000)">Saludar</button>
+    <button onclick="clearTimeout(saludo)">Cancelar</button>
+</body>
+</html>

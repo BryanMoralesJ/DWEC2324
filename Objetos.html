@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Tengo que revisar la información de los objetos en javascript!!
+        */
+
+        let tvSamsung = {
+            nombre:"TV Samsung 42", //propiedades sin comilla
+            categoria: "Televisores",
+            unidades: 4,
+            precio: 345.95,
+            importe: function(){ //Método
+                return this.unidades * this.precio;
+            },
+            getinfo: function(){
+                return this.nombre + "(" + this.categoria + "): " + this.unidades + "usds x " + this.precio + "€ = " + this.importe() + "€";
+            }
+        };
+
+        let Productos = {
+        productos1 : {
+            nombre:"Producto1", //propiedades sin comilla
+            categoria: "categoria1",
+            unidades: 10,
+            precio: 225.95,
+            importe: function(){ //Método
+                return this.unidades * this.precio;
+            },
+            getinfo: function(){
+                return this.nombre + "(" + this.categoria + "): " + this.unidades + "usds x " + this.precio + "€ = " + this.importe() + "€";
+            }
+        },
+
+        productos2 : {
+            nombre:"PC GAMER", //propiedades sin comilla
+            categoria: "Ordenadores", 
+            unidades: 4,
+            precio: 1000.00,
+            importe: function(){ //Método
+                return this.unidades * this.precio;
+            },
+            getinfo: function(){
+                return this.nombre + "(" + this.categoria + "): " + this.unidades + "usds x " + this.precio + "€ = " + this.importe() + "€";
+            }
+        },
+
+        productos3 : {
+            nombre:"mp3", //propiedades sin comilla
+            categoria: "sonido",
+            unidades: 5,
+            precio: 20.32,
+            importe: function(){ //Método
+                return this.unidades * this.precio;
+            },
+            getinfo: function(){ //Método
+                return this.nombre + "(" + this.categoria + "): " + this.unidades + " usds x " + this.precio + "€ = " + this.importe() + "€";
+            }
+        }
+        }
+
+        //console.log(Productos.productos1.getinfo());
+
+        let productosBase = {
+            tamano: 12,
+            getinfo: function(){ //Método
+                return "tamaño: " + this.tamano + " nombre: " + this.nombre ;
+            }
+        }
+
+        let tvPruebas = Object.create(productosBase);
+
+        tvPruebas.nombre = "tele";
+        tvPruebas.categoria = "Televisores";
+        tvPruebas.unidades = 2;
+        tvPruebas.precio = 223.2;
+        tvPruebas.tamano = 100;
+
+        console.log(tvPruebas.getinfo());
+
+    </script>
+</body>
+</html>

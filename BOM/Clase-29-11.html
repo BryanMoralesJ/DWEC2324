@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        Ejemplo realizado con el modelo en linea 
+        <h1 id="cabecera" onclick="document.getElementById('cabecera').innerHTML = 'mi texto'" onmouseover="document.getElementById('cabecera').style.backgroundColor = 'red'" onmouseleave="document.getElementById('cabecera').style.backgroundColor = 'white'">Buenos días</h1> 
+    -->
+    <!--
+        Ejemplo realizado con el modelo tradicional
+        <h3 id="tradicional" onclick="cambiar()">PULSA AQUÍ</h3>
+    -->
+    <!--
+        Ejemplo realizado con el modelo W3C
+    -->
+
+    <h3 id="w3c">Modelo W3C</h3>
+
+    <script>
+        /*
+        
+        function cambiar(){
+            document.getElementById('tradicional').innerHTML = "Modelo tradicional"
+        }
+        */
+
+        function color(){
+            document.getElementById('w3c').addEventListener("click",color,false);
+        }
+
+
+
+    </script>
+</body>
+</html>

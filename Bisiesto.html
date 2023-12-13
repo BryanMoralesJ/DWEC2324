@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function esBisiesto(anio){
+            if(anio.toString().substring(-2) === "00"){
+                if(anio%400===0){
+                    return true;
+                }
+            }else if(anio%4===0 && anio%100!=0){
+                return true;
+            }
+            return false;
+        }
+
+        function perimetroRectangulo(a,b){
+            if(a.toString().includes(".") && b.toString().includes(".")){
+                return 2*(a+b);
+            }else{
+                let num1 = Number.parseFloat(a).toFixed(2);
+                let num2 = Number.parseFloat(b).toFixed(2);
+                return 2*(num1+num2);
+            }
+        }
+
+        console.log(perimetroRectangulo(2,3));
+    </script>
+</body>
+</html>

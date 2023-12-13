@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="eventos">Capturar Eventos</h1>
+    <p id="parrafo1">Parrafo1</p>
+    <p id="parrafo2">Parrafo2</p>
+
+
+    <script>
+
+        let eventos =  document.querySelector(".eventos");
+        let parrafo1 = document.querySelector("#parrafo1");
+        let parrafo2 = document.querySelector("#parrafo2");
+
+        eventos.addEventListener("mouseover",manejador);
+        eventos.addEventListener("mouseout",manejador);
+
+        parrafo1.addEventListener("click",saludo);
+        parrafo2.addEventListener("click",saludo);
+
+        function saludo(e){
+            if(e.target.id == "parrafo1"){
+                alert("Has pulsado el parrafo1");
+            }else if(e.target.id == "parrafo2"){
+                alert("Has pulsado el parrafo 2");
+            }
+        }
+
+        function manejador(e){
+            switch(e.type){
+                case "mouseover":
+                    this.style.color="red";
+                break;
+                case "mouseout":
+                    this.style.color="blue";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

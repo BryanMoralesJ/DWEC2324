@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Papelera de Reciclaje</title>
+  <style>
+    .bin {
+      width: 150px;
+      height: 200px;
+      background-color: #7F8C8D;
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lid {
+      width: 140px;
+      height: 20px;
+      background-color: #2C3E50;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .trash {
+      width: 100%;
+      height: 200px;
+      background-image: url('https://www.shutterstock.com/shutterstock/photos/1923060779/display_1500/stock-vector-trashcan-icon-carbage-can-symbol-flat-shape-delete-sign-trash-container-and-recycling-bin-logo-1923060779.jpg');
+      /*background-image: url('papelera.jpg'); */
+      background-size: cover;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="bin">
+    <div class="lid"></div>
+    <div class="trash" ></div>
+  </div>
+
+  <script>
+    // let papelera = document.getElementById("trash");
+
+    // papelera.addEventListener("click",()=>{
+    //     papelera.style.display = "none";
+    //     alert("Papelera vaciada");
+    // },false);
+
+    let pape = document.querySelector('.trash');
+
+    pape.addEventListener("click",()=>{
+        pape.style.display = "none";
+        setTimeout(() => {
+            alert("Papelera vaciada");
+        }, 10);
+    },false);
+
+    document.addEventListener("contextmenu",(e) => {
+        e.preventDefault();
+    },false);
+
+  </script>
+</body>
+</html>
