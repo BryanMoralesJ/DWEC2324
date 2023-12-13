@@ -18,9 +18,27 @@
     //Filtrar mayor de 25 años
 
     let mayorVeinticinco = usuarios.filter(usuario => usuario.edad >= 25);
+<<<<<<< HEAD
 
     console.log(mayorVeinticinco);
 
+=======
+    
+    console.log(mayorVeinticinco);
+
+    //duplicar edad
+
+    let duplicar = mayorVeinticinco.map(n => n.edad*2);
+
+    console.log(duplicar);
+
+    //Suma de las edades
+
+    let sumas = duplicar.reduce((suma,edad) => suma += edad);
+
+    console.log(sumas);
+
+>>>>>>> ramaObj2
     </script>
 </body>
 </html>
