@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const contactos = [
+            {nombre:"Maxwell Wright",telefono:"(0191) 719 6495",correo:"correoprimero@pruebas.co.uk"},
+            {nombre:"Raja Villareal",telefono:"0866 398 2895",correo:"pruebassegundo@sed.com"},
+            {nombre:"Helen Richards",telefono:"0800 1111",correo:"correotercero@convallis.edu"}
+        ];
+
+        contactos.push({nombre:"Maisie Haley",telefono:"0913 531 3030",correo:"risus.Quisque@urna.ca"});
+
+        //Solicitamos la información con el prompt
+
+        name = prompt("Ingresa el nombre: ","");
+        telf = prompt("Ingresa el teléfono: ","");
+        mail = prompt("Ingresa el email:","");
+        contactos.push({nombre:name,telefono:telf,correo:mail});
+
+        console.log(contactos[0].nombre + " / " + contactos[0].telefono + " / " + contactos[0].correo);
+        console.log(contactos[contactos.length-1].nombre + " / " + contactos[contactos.length-1].telefono + " / " + contactos[contactos.length-1].correo);
+
+
+    </script>
+
+</body>
+</html>
