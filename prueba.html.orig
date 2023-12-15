@@ -7,17 +7,19 @@
 </head>
 <body>
     <script>
+<<<<<<< HEAD
         const numeros = [1,2,3,4,5,"persona","avion"];
 
         for(let i = 0; i < numeros.length; i++){
             console.log(numeros[i]);
         }
-
+=======
         const numeros = [1,2,3,4,5,"persona"];
 
         numeros.forEach(element => {
             console.log(element);
         });
+>>>>>>> ramaObj2
     </script>
 </body>
 </html>
