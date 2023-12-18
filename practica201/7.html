@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="texto">
+    <button id="copiar">Copiar texto</button>
+
+    <script>
+        let texto = document.getElementById("texto");
+        let boton = document.getElementById("copiar");
+        boton.addEventListener("click", function (){
+            navigator.clipboard.writeText(texto.value);
+            console.log("Texto copiado al portapapeles: " + texto.value);
+        },false);
+    </script>
+</body>
+</html>
