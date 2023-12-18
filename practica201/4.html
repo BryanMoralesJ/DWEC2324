@@ -9,7 +9,7 @@
     <script>
         let primerNumero = 1;
         let segundoNumero = 5;
-        let generarNumero = Math.floor(Math.random(primerNumero)*segundoNumero);
+        let generarNumero = Math.floor(Math.random()*(segundoNumero-primerNumero))+primerNumero;
         console.log(generarNumero);
     </script>
 </body>
