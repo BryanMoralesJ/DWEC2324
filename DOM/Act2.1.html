@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="texto">Este es un titulo dinamico</h1>
+    <button id="color">Cambiar color</button>
+    <button id="fuente">Cambiar tamaño fuente</button>
+
+    <script>
+        let texto = document.getElementById("texto");
+        let boton1 = document.getElementById("color");
+        let boton2 = document.getElementById("fuente");
+
+        boton1.addEventListener("click",() => {
+            //Generamos los colores y los añadimos al texto
+            let generarPrimerColor = Math.floor(Math.random()*255);
+            let generarSegundoColor = Math.floor(Math.random()*255);
+            let generarTercerColor = Math.floor(Math.random()*255);
+            texto.style.color = `rgb(${generarPrimerColor},${generarSegundoColor},${generarTercerColor})`;
+        },false);
+
+        boton2.addEventListener("click",() => {
+            let generartamano = Math.floor(Math.random()*255);
+            texto.style.fontSize = `${generartamano}px`;
+        },false);
+    </script>
+</body>
+</html>

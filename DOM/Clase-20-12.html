@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .miClase{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <p id="parrafo1">parrafo1</p>
+        <p id="parrafo2">parrafo2</p>
+        <p id="parrafo3" class="miClase">parrafo3</p>
+    </div>
+    <br/>
+
+    <button id="cambiarTextos">Cambiar texto de párrafo</button>
+    <button id="cambiarClases">Cambiar clases del párrafo</button>
+    <button id="quitarClases">Quitar clases de los párrafos</button>
+
+
+    <script>
+        //No cargar el script hasta que este cargado:
+        //windows.onload=inicio;
+        //windows.addEventListener("load",inicio); //esta es la mejor opción
+
+        /*
+            function inicio(){
+                document.getElementById("cambiarTextos").addEventListener("click",cambiarTextos);
+                document.getElementById("cambiarClases").addEventListener("click",cambiarClases);
+                document.getElementById("quitarClases").addEventListener("click",quitarClases);
+            }
+        */
+
+        let parrafo1 = document.getElementById("parrafo1");
+        let parrafo2 = document.getElementById("parrafo2");
+        let parrafo3 = document.getElementById("parrafo3");
+        let parrafo3Class = document.getElementsByClassName("miClase");
+
+        let boton1 = document.getElementById("cambiarTextos");
+        let boton2 = document.getElementById("cambiarClases");
+        let boton3 = document.getElementById("quitarClases");
+
+        boton1.addEventListener("click",() => {
+            parrafo1.innerHTML = "Nuevo texto parrafo1";
+            parrafo2.innerHTML = "Nuevo texto parrafo2";
+            parrafo3.innerHTML = "Nuevo texto parrafo3";
+        },false);
+
+        boton2.addEventListener("click", () => {
+            parrafo1.setAttribute("class","miClase");
+            parrafo2.className = "miClase";
+        },false);
+
+        boton3.addEventListener("click", () => {
+            parrafo1.setAttribute("class","");
+            parrafo2.className = "";
+            parrafo3.className = "";
+        },false);
+    </script>
+</body>
+</html>

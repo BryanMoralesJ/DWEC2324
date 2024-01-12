@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tablero {
+            display:grid;
+            grid-template-columns: repeat(9, 32px);
+            grid-template-rows: repeat(9, 32px);
+        }
+        #tablero div{
+            border-left: 2px solid #D3D3D3;
+            border-top: 2px solid #D3D3D3;
+            border-right: 2px solid #A9A9A9;
+            border-bottom: 2px solid #A9A9A9;
+            text-align: center;
+            line-height: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tablero">
+    </div>
+
+    <script src="iniciarBuscaminas.js"></script>
+</body>
+</html>
