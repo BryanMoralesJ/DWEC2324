@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Document Object Model</title>
+    
+</head>
+
+<body>
+
+    <div id="bloque3">
+        <h2>DAM</h2>
+        <ul id="lista">
+            <li>Sistemas Gestión Empresarial</li>
+            <li>Programación Multimedia y Disp. Móviles</li>
+            <li>Desarrollo de Interfaces</li>
+            
+        </ul>
+    </div>
+    
+     <div id="bloque10">
+        <h2>DAW</h2>
+        <ul id="lista">
+            <li>DWES</li>
+            <li>DWEC</li>
+	   <li>Despliegue Web</li>
+	   <li>Diseño Interfaces Web </li>
+        </ul>
+    </div>
+    
+    <div id="texto"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (){
+            let elementoH2 = document.getElementsByTagName("h2");
+
+            for(let i = 0; i < elementoH2.length; i++){
+                elementoH2[i].addEventListener("click", (event) => {
+                    let eventoH2 = event.target; //Sacamos el nombre de los h2
+                    let divPadre = eventoH2.parentNode; //Sacamos el div y todo lo que tiene dentro.
+                    let identificadorPadre = divPadre.id; //El ID hace referencia al nombre del bloque.
+                    let listaDesordenada = divPadre.getElementsByTagName('ul')[0]; //Si no ponemos el acceso al indice 0, nos devolveria una HTMLCollection
+                    let lista = listaDesordenada.getElementsByTagName("li"); //Sacamos los hijos que tenga ul
+                    let texto = document.getElementById("texto");
+
+                    texto.innerHTML = `Identificador div: ${identificadorPadre} <br/>`;
+                    for(let li = 0; li < lista.length; li++){
+                        texto.innerHTML += "Identificador li: " + lista[li].textContent + "<br/>";
+                    }
+                },false);
+            }
+        }, false);
+    </script>
+
+</body>
+
+</html>

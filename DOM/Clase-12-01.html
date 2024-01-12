@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data" id="formularioEjemplo">
+        Nombre: <input type="text" name="nombre" id="nombre" size="50"><br/>
+        Apellidos: <input type="text" name="apellidos" id="apellidos" size="50"><br/>
+        DNI: <input type="text" name="dni" id="dni" size="10"><br/>
+
+        <label for="hombre">Sexo:</label> <br/>
+        <input type="radio" name="sexo" id="hombre" checked>Hombre<br/>
+        <input type="radio" name="sexo" id="mujer">Mujer<br/>
+
+        Incluir mi foto: <input type="file" name="foto" id="foto"><br/>
+        <input type="checkbox" name="publicidad" id="publicidad" checked>Enviar publicidad <br/>
+
+        <select id="aprobar" >
+            <option value="10">Saco 10 en DWEC</option>
+            <option value="9">Saco 9 en DWEC</option>
+            <option value="8">Saco 8 en DWEC</option>
+            <option value="añadir">Añadir</option>
+        </select> <br/>
+
+        <input type="submit" value="Guardamos cambios">
+        <input type="reset" value="Borrar los datos introducidos">
+    </form>
+
+    <script>
+        /*
+        al pulsar sobre añadir tiene que meter una nueva opcion
+        */
+        window.addEventListener("load", () => {
+        let elemento=document.getElementById("aprobar");
+        let crearElemento = document.createElement("option");
+		for(i=0;i<elemento.options.length;i++){
+		    //console.log("Valor de la opcion "+elemento.options[i].value);
+            if(elemento.options[i].value == "añadir"){
+                crearElemento.value = "7";
+                crearElemento.text = "Saco 7 en DWEC";
+                elemento.insertBefore(crearElemento,elemento.options[i].value);
+            }
+		}
+
+        elemento.options.valueadd
+	    let sel=elemento.selectedIndex;
+	        console.log("El valor de la opcion seleccionada es "+elemento.options[sel].value+"y el texto asociado es " +elemento.options[sel].text);
+	    // Para cambiar  el índice seleccionado:
+	    elemento.selectedIndex=0;
+
+        });
+        
+    </script>
+</body>
+</html>
