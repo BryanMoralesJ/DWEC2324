@@ -35,15 +35,20 @@
         */
         window.addEventListener("load", () => {
         let elemento=document.getElementById("aprobar");
-        let crearElemento = document.createElement("option");
-		for(i=0;i<elemento.options.length;i++){
-		    //console.log("Valor de la opcion "+elemento.options[i].value);
-            if(elemento.options[i].value == "añadir"){
-                crearElemento.value = "7";
+        /*
+            El evento change es usado para elementos input, select y textarea
+        */
+        elemento.addEventListener("change", () => {
+            if(elemento.value === "añadir"){
+                let crearElemento = document.createElement("option");
+                //Establecemos los valores y el texto del option creado
+                crearElemento.value = "7"
                 crearElemento.text = "Saco 7 en DWEC";
-                elemento.insertBefore(crearElemento,elemento.options[i].value);
+
+                //Añadir antes del elemento añadir
+                elemento.insertBefore(crearElemento,elemento.lastElementChild);
             }
-		}
+        },false);
 
         elemento.options.valueadd
 	    let sel=elemento.selectedIndex;
