@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor">
+        <p>Lista de la compra</p>
+        <ul id="lista">
+        </ul>
+        <input type="text" name="texto" id="texto"><br/>
+        <button id="btnAgregar">Añadir</button>
+    </div>
+
+    <script>
+        window.addEventListener("load",() => {
+            let lista = document.getElementById("lista");
+            let btn = document.getElementById("btnAgregar");
+            let texto = document.getElementById("texto");
+            //Creamos el LI cada vez que añada algo en el texto
+            let addProducto = document.createElement("li");
+
+            btn.addEventListener("click", () => {
+                addProducto.innerHTML = texto.value;
+                list = lista.getElementsByTagName("li");
+
+                if(list.length > 0){
+
+                }else{
+                    lista.appendChild(addProducto);
+                }
+
+            },false);
+        });
+    </script>
+</body>
+</html>
