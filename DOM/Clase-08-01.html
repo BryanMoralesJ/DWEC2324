@@ -10,15 +10,42 @@
         }
     </style>
     <script>
-        window.addEventListener("load", inicio);
-
-        function inicio() {
+        window.addEventListener("load", () => {
             document.getElementById("crearParrafo").addEventListener("click", crearParrafo);
             document.getElementById("crearImagen").addEventListener("click", crearImagen);
             document.getElementById("borrarUltimo").addEventListener("click", borrarUltimo);
             document.getElementById("borrarPrimero").addEventListener("click", borrarPrimero);
             document.getElementById("sustituirPrimVacio").addEventListener("click", sustituirPrimero);
-        }
+
+            function crearParrafo(){
+                let div1 = document.getElementById("div1");
+                let crearParrafo = document.createElement("p");
+                crearParrafo.innerHTML = "¡Parrafo creado!";
+                div1.appendChild(crearParrafo);
+            }
+
+            function crearImagen(){
+                let div1 = document.getElementById("div1");
+                let crearImagen = document.createElement("img");
+                crearImagen.src = "img.png";
+                div1.appendChild(crearImagen);
+            }
+
+            function borrarUltimo(){
+                let div1 = document.getElementById("div1");
+                div1.removeChild(div1.lastChild);
+            }
+            function borrarPrimero(){
+                let div1 = document.getElementById("div1");
+                div1.removeChild(div1.firstChild);
+            }
+            function sustituirPrimero(){
+                let div1 = document.getElementById("div1");
+                let primerHijo = div1.firstChild;
+                primerHijo.innerHTML = "Nuevo texto creado!";
+            }
+
+        });
       </script> 
 </head>
 
