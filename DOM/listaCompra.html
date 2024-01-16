@@ -10,7 +10,7 @@
         <p>Lista de la compra</p>
         <ul id="lista">
         </ul>
-        <input type="text" name="texto" id="texto"><br/>
+        <input type="text" name="texto" id="texto"><br/><br/>
         <button id="btnAgregar">Añadir</button>
     </div>
 
@@ -19,19 +19,21 @@
             let lista = document.getElementById("lista");
             let btn = document.getElementById("btnAgregar");
             let texto = document.getElementById("texto");
-            //Creamos el LI cada vez que añada algo en el texto
-            let addProducto = document.createElement("li");
+            let guardarItems = [];
 
             btn.addEventListener("click", () => {
-                addProducto.innerHTML = texto.value;
-                list = lista.getElementsByTagName("li");
+                guardarItems.push(texto.value);
 
-                if(list.length > 0){
+                texto.value = "";
+                lista.innerHTML = "";
 
-                }else{
-                    lista.appendChild(addProducto);
+                for(let i = 0; i < guardarItems.length; i++){ 
+                    let crearItem = document.createElement("li");
+                    crearItem.innerHTML = guardarItems[i];
+                    guardarItems.sort();
+                    lista.appendChild(crearItem);
                 }
-
+                console.log(guardarItems);
             },false);
         });
     </script>
