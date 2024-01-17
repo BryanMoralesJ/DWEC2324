@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" id="formulario">
+        <p id="texto">Máquina apagada</p>
+        <input type="submit" value="Encender máquina" name="encender" id="enviar">
+    </form>
+
+    <script>
+
+        window.addEventListener("load", () => {
+        let texto = document.getElementById("texto");
+        let btn = document.getElementById("enviar");
+        let formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", (event) => {
+            //Quitamos el comportamiento natural y vamos cambiando el valor del botón y el identificador del servidor .name
+            event.preventDefault();
+            if(btn.name == 'encender'){
+                texto.innerHTML = "Máquina encendida";
+                btn.value = "Apagar máquina";
+                btn.name = 'apagar'
+            }else if(btn.name == 'apagar'){
+                texto.innerHTML = "Máquina apagada";
+                btn.value = "Encender Máquina";
+                btn.name = "encender";
+            }
+        },false);
+        });
+
+    </script>
+</body>
+</html>

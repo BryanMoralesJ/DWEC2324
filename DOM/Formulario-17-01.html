@@ -27,6 +27,7 @@
 
         <input type="submit" value="Guardamos cambios" name="guardar">
         <input type="reset" value="Borrar los datos introducidos" name="resetear">
+        
     </form>
 
     <script>
@@ -34,21 +35,28 @@
         al pulsar sobre añadir tiene que meter una nueva opcion
         */
         window.addEventListener("load", () => {
-        let elemento=document.getElementById("aprobar");
-        /*
-            El evento change es usado para elementos input, select y textarea
-        */
-        elemento.addEventListener("change", () => {
-            if(elemento.value === "añadir"){
-                let crearElemento = document.createElement("option");
-                //Establecemos los valores y el texto del option creado
-                crearElemento.value = "7"
-                crearElemento.text = "Saco 7 en DWEC";
+        
+        let formulario = document.getElementById("formularioEjemplo");
+        let nombre = document.getElementById("nombre");
 
-                //Añadir antes del elemento añadir
-                elemento.insertBefore(crearElemento,elemento.lastElementChild);
+        formulario.addEventListener("submit",(event) => {
+            event.preventDefault();
+            let info = confirm("Si estás seguro de guardar la información pulsa aceptar, en caso contrario pulsa cancelar");
+            if(info){
+                let asunto = "Mensaje desde el formulario";
+                let destinatario = "mi-email.com";
+                let cuerpoMensaje = "Nombre: " + nombre.value + "\n"; 
+                //Con esto parseamos la información para que se muestre en el gestor de correo
+                let mailtoLink = "mailto:" + destinatario + "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpoMensaje);
+                window.location.href = mailtoLink;
+                formulario.submit();
             }
-        },false);
+        });
+
+        formulario.addEventListener("reset",(event) => {
+            nombre.focus();
+        });
+
         });
         
     </script>
