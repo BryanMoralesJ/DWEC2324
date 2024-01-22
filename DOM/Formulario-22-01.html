@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            border: solid 4px #FF0009;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="" method="post" id="miFormulario">
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" id="nombre"></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="text" name="telefono" id="telefono"></td>
+            </tr>
+            <tr>
+                <td>Fecha de nacimiento</td>
+                <td><input type="text" name="dia" id="dia"></td>
+                <td><input type="text" name="mes" id="mes"></td>
+                <td><input type="text" name="anio" id="anio" size="4"></td>
+            </tr>
+            <tr>
+                <td>Sexo</td>
+                <td><input type="radio" name="sexo" id="hombre" checked>Hombre</td>
+                <td><input type="radio" name="sexo" id="mujer">Mujer</td>
+            </tr>
+            <tr>
+                <td>Mayor de 18 años</td>
+                <td><input type="checkbox" name="mayorEdad" id="mayorEdad"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
