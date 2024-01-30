@@ -1,13 +1,35 @@
 window.addEventListener("DOMContentLoaded", () => {
 
-    // botón submit
-    let submit = document.addEventListener("click",validar,false);
+    // botones
+    let submit = document.getElementById("submit");
+    let redirigir = document.getElementById("redirigir");
 
-    // Funcion validar nombre
+    // selects 
+    let curso= document.getElementById("curso");
+
+    // al pulsar sobre la opción añadir curso se solicita que agrege un nuevo curso academico
+    curso.addEventListener("change", () => {
+        if(curso.value === "add"){
+            let guardarCurso = prompt("Ingresa la fecha del curso", "24-25");
+            let crearElemento = document.createElement("option");
+            crearElemento.value = guardarCurso;
+            crearElemento.text = guardarCurso;
+            curso.insertBefore(crearElemento,curso.lastElementChild);
+        }
+    } , false);
+
+    // al pulsar el botón se redirige a la página de Google
+    redirigir.addEventListener("click", () => {
+        location.href = "https://google.com";
+    }, false);
+
+    // al pulsar el botón submit validamos que todos los campos cumplan con lo indicado
+    submit.addEventListener("submit",validar, false);
+
+    // función validar nombre
     function validarNombre(){
         let nombre = document.getElementById("nombre");
         if(!nombre.checkValidity){
-
             if(nombre.validity.valueMissing){
                 mostrarErrores(nombre,"El cuadro de texto se encuentra vacío");
                 return false;

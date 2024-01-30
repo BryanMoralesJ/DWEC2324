@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="202BMJ.css">
+    <script src="202BMJ.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Iniciamos el formulario -->
+    <form action="" method="POST">
+    <!-- Datos personales -->
+    <fieldset>
+        <legend>Datos personales</legend>
+            Introduce tu nombre <input type="text" name="nombre" id="nombre" minlength="2" maxlength="15" required><br/>
+            Introduce tu NIF <input type="text" name="nif" id="nif" pattern="[0-9]{8}[A-Za-z]{1}" required> <br/>
+            Fecha de matriculación <input type="text" name="fmatriculacion" id="fmatriculacion" placeholder="XX-XX-XXXX" pattern="[0-9]{2}[\-]{1}[0-9]{2}[\-]{1}[0-9]{4}" required> <br/>
+            <p>Mensaje</p>
+            <textarea name="mensaje" id="mensaje" cols="70" rows="10" required></textarea>
+    </fieldset>
+
+    <!-- Elegir curso academico o crearlo -->
+    <p>Cursos academicos: </p>
+    <select name="curso" id="curso">
+        <option value="20-21">20-21</option>
+        <option value="21-22">21-22</option>
+        <option value="22-23">22-23</option>
+        <option value="23-24">23-24</option>
+        <option value="add">Añadir curso</option>
+    </select>
+
+    <!-- Elegir el color -->
+    <p>Elige un color:</p>
+    <input type="radio" name="colores" id="colorRojo">Rojo <br/>
+    <input type="radio" name="colores" id="colorVerde">Verde <br/>
+    <input type="radio" name="colores" id="colorAzul">Azul <br/>
+    <input type="radio" name="colores" id="colorOscuro" checked>Oscuro <br/>
+    <input type="color" name="color" id="azul" value="#0022FF"> <br/>
+
+    <!-- Elegir la asignatura -->
+    Selecciona una asignatura:
+    <select name="asignatura" id="asignatura">
+        <option value="DWEC">DWEC</option>
+        <option value="DWES">DWES</option>
+        <option value="DIW">DIW</option>
+        <option value="DAW">DAW</option>
+        <option value="GBD">GBD</option>
+    </select>
+
+    <!-- Elegir disponibilidad-->
+    <p>Selecciona los días con disponibilidad</p>
+    <input type="checkbox" name="diasDisponibles" id="Lunes" checked>Lunes <br/>
+    <input type="checkbox" name="diasDisponibles" id="Martes">Martes <br/>
+    <input type="checkbox" name="diasDisponibles" id="Miercoles">Miercoles <br/>
+    <input type="checkbox" name="diasDisponibles" id="Jueves" checked>Jueves <br/>
+    <input type="checkbox" name="diasDisponibles" id="Viernes">Viernes <br/>
+
+    <!-- día preferente -->
+    Selecciona el día preferente:
+    <select name="diasPreferentes" id="diasPreferentes">
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miercoles">Miercoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+    </select>
+
+    <!-- Parrafo donde se mostrara los errores que haya -->
+
+    <p id="errores"></p>
+
+    <!-- botones finales -->
+    <input type="submit" value="Haz clic para enviar información" id="submit">
+    <input type="reset" value="Comenzar a rellenar de nuevo" id="reset">
+    <button type="button" id="redirigir">Haz clic sobre mí</button>
+    </form>
+</body>
+</html>
