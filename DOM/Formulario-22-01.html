@@ -26,7 +26,7 @@
                 <td>Fecha de nacimiento</td>
                 <td><input type="text" name="dia" id="dia"></td>
                 <td><input type="text" name="mes" id="mes"></td>
-                <td><input type="text" name="anio" id="anio" size="4"></td>
+                <td><input type="text" name="anio" id="anio" size="4" maxlength="4"></td>
             </tr>
             <tr>
                 <td>Sexo</td>
@@ -36,6 +36,12 @@
             <tr>
                 <td>Mayor de 18 años</td>
                 <td><input type="checkbox" name="mayorEdad" id="mayorEdad"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Enviar" id="enviar">
+                    <input type="reset" value="Borrar" id="borrar">
+                </td>
             </tr>
         </table>
     </form>

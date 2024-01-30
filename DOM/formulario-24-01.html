@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="validation.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Iniciamos el formulario -->
+    <form action="">
+    <!-- Datos personales -->
+    <fieldset>
+        <legend>Datos personales</legend>
+            Introduce tu nombre <input type="text" name="nombre" id="nombre" required><br/>
+            Introduce tu NIF <input type="text" name="" id=""> <br/>
+            <p>Mensaje</p>
+            <textarea name="mensaje" id="" cols="70" rows="10"></textarea>
+    </fieldset>
+
+    <!-- Elegir el color -->
+    <p>Elige un color:</p>
+    <input type="radio" name="colores" id="colorRojo">Rojo <br/>
+    <input type="radio" name="colores" id="colorVerde">Verde <br/>
+    <input type="radio" name="colores" id="colorAzul">Azul <br/>
+    <input type="radio" name="colores" id="colorOscuro" checked>Oscuro <br/>
+
+    <!-- Elegir la asignatura -->
+    Selecciona una asignatura:
+    <select name="asignatura" id="asignatura">
+        <option value="DWES">DWES</option>
+        <option value="DWEC">DWEC</option>
+    </select>
+
+    <!-- Elegir disponibilidad-->
+    <p>Selecciona los días con disponibilidad</p>
+    <input type="checkbox" name="diasDisponibles" id="Lunes">Lunes <br/>
+    <input type="checkbox" name="diasDisponibles" id="Martes">Martes <br/>
+    <input type="checkbox" name="diasDisponibles" id="Miercoles">Miercoles <br/>
+    <input type="checkbox" name="diasDisponibles" id="Jueves">Jueves <br/>
+    <input type="checkbox" name="diasDisponibles" id="Viernes">Viernes <br/>
+
+    <!-- día preferente -->
+    Selecciona el día preferente:
+    <select name="diasPreferentes" id="diasPreferentes">
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+    </select>
+    <br/><br/>
+    <!-- botones finales -->
+
+    <input type="submit" value="Haz clic para enviar información">
+    <input type="reset" value="Comenzar a rellenar de nuevo">
+    <a href="https://google.com"><button>Haz clic sobre mí</button></a>
+    </form>
+</body>
+</html>

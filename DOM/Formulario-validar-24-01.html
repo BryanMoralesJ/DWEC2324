@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VALIDACION DE FORMULARIOS CON HTML5</title>
+    <style>
+        .error {
+            border: solid 2px #FF0009;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Formulario</h1>
+    <form action="procesar.php" method="post" id="miFormulario">
+        <table>
+            <tr>
+                <td>Nombre*: </td>
+                <td>
+                    <input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-Za-z]{8,15}" title="Introduce un nombre entre 2 y 15" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Edad*: </td>
+                <td>
+                    <input type="number" name="edad" id="edad" min="18" max="120" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Telefono*: </td>
+                <td>
+                    <input type="text" name="telefono" id="telefono" maxlength="9" pattern="[0-9]{9}" required/>
+                </td>
+            </tr>
+        </table>
+        <p id="mensajeError"></p>
+        <p>
+            <input type="submit" value="Enviar" id="enviar" />
+            <input type="reset" value="Borrar" id="borrar" />
+        </p>
+    </form>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+
+            let enviar = document.getElementById("enviar");
+
+            enviar.addEventListener("click",validar,false);
+
+            function validarNombre(){
+                let nombre = document.getElementById("nombre");
+                if(!nombre.checkValidity()){
+                    if(nombre.validity.valueMissing){
+                        error(nombre,"No puede dejar el campo nombre vacio");
+                    }
+
+                    if(nombre.validity.patternMismatch){
+                        error(nombre,"Debe contener entre 2 y 15 caracteres");
+                    }
+                    return false;
+                }
+                return true;
+            }
+
+            function validarEdad(){
+                let edad = document.getElementById("edad");
+                if(!edad.checkValidity()){
+                    if(edad.validity.valueMissing){
+                        error(edad,"No puede dejar el campo edad vacio");
+                    }
+                    if(edad.validity.patternMismatch){
+                        error(edad,"Debe ser entre 18 y 120 años");
+                    }
+                    return false;
+                }
+                return true;
+            }
+
+            function validarTelefono(){
+                let telefono = document.getElementById("telefono");
+                if(!telefono.checkValidity()){
+                    if(telefono.validity.valueMissing){
+                        error(telefono,"No puede dejar el telefono vacio");
+                    }
+                    if(telefono.validity.patternMismatch){
+                        error(telefono,"Debe contener 9 digitos");
+                    }
+
+                    return false;
+                }
+                return true;
+            }
+
+            function validar(e){
+                if(!validarNombre() && !validarEdad() && !validarTelefono()){
+                    e.preventDefault();
+                    return false;
+                }
+                return true;
+            }
+
+            function error(elemento,mensaje){
+                let error = document.getElementById("mensajeError");
+                error.innerHTML = mensaje;
+                elemento.className = "error";
+                elemento.focus();
+            }
+
+        });
+    </script>
+</body>
+
+</html>
