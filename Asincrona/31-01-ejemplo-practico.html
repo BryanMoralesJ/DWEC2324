@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="iniciar">Ejectuar promesa</button>
+    <div id="mensajes"></div>
+
+    <script>
+        /*
+            La funcion probarPromise debe:
+            Contar las veces que se pulsa el boton y saca en el div los siguientes cuatro mensajes
+            1.- antes de construir la promesa
+            2.- dentro de la promesa antes de resolverla
+            3.- dentro del then
+            4.- fuera de la promesa
+            Para la promesa utilizar settimeout(function => resolve(contador),Math.Random()*4000 + 1000);
+        */
+
+        let mensajes = document.getElementById("mensajes");
+        let btn = document.getElementById("iniciar");
+        let contador = 0;
+
+        btn.addEventListener("click", () => {
+            let guardarContador = contador++;
+            mensajes.insertAdjacentHTML('beforeend', guardarContador + " empieza el código sincrono <br/>");
+            let promesa = new Promise((resolve, reject) => { 
+                mensajes.insertAdjacentHTML('beforeend', guardarContador + " Dentro de la promesa, antes del timeout. Empieza el código asíncrono <br/>");
+                setTimeout(() => {
+                    resolve(guardarContador);
+                }, Math.random()*4000 + 1000);
+            });
+
+            promesa.then(contador => mensajes.insertAdjacentHTML('beforeend', guardarContador + " Dentro del .then. Código asíncrono terminado <br/>"));
+            mensajes.insertAdjacentHTML('beforeend', guardarContador + "Código después del .then código sincrono terminado <br/>");
+        },false);
+    </script>
+
+</body>
+</html>

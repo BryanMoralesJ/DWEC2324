@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Ejercicio 1
+
+        setTimeout(() => {
+            console.log("Ejecuto la función del ejemplo 1");
+        }, 7000);
+
+        // Ejercicio 2
+
+        setTimeout(() => console.log("Esta parte es asíncrona"), 4000);
+
+        console.log("Esta parte es síncrona");
+
+        // Ejercicio 3
+
+        let mipromesa = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(console.log("Promesa ejecutada en 3 segundos"));
+            }, 3000);
+        });
+
+        // Ejercicio 4
+
+        let realizado = true;
+        const tareaRealizada = new Promise((resolve, reject) => {
+            if(realizado){
+                const trabajoCompletado = "La tarea se ha completado";
+                resolve(trabajoCompletado);
+                console.log(trabajoCompletado);
+            }else{
+                const trabajoFallido = "La tarea ha fallado";
+                reject(trabajoFallido);
+                console.log(trabajoFallido);
+            }
+        });
+
+        // Ejercicio 5
+
+        let miPromesa2 = new Promise((resolve, reject) => {
+            const numero = Math.floor(Math.random()*10);
+            setTimeout(() => (numero > 5) ? resolve(numero) : reject(new Error ("Se ha obtenido un número menor que 5")) , 5000);
+        });
+
+        miPromesa2.then(numero => console.log(numero))
+        .catch(error => console.log(error));
+        
+    </script>
+</body>
+</html>
