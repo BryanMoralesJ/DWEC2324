@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let datos = [
+            {
+                id:1,
+                nombre: "Juan",
+                edad:18
+            },
+            {
+                id:2,
+                nombre: "Ana",
+                edad:48
+            },
+            {
+                id:3,
+                nombre: "Pedro",
+                edad:34
+            },
+        ];
+
+        function getDatos(){
+            return(datos);
+        }
+
+        console.log(getDatos());
+
+        function getDatosSinc(){
+            setTimeout(getDatos,3000);
+        }
+
+        function getDatosPromesa(){
+            return new Promise((resolve,rejected) => {
+                setTimeout(() => {
+                    resolve(datos);
+                }, 1000);
+            });
+        }
+
+        console.log(getDatosSinc());
+
+        console.log(getDatosPromesa());
+
+        getDatosPromesa().then((datos) => console.log(datos));
+
+        async function asyawt(){
+            try {
+                const misDatos = await getDatosPromesa();
+                console.log(misDatos);
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+
+        asyawt();
+    </script>
+</body>
+</html>
