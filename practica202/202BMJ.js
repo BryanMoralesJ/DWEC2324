@@ -1,11 +1,12 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => { // Con esto conseguimos que todo este cargado
 
-    // botones
     let submit = document.getElementById("submit");
     let redirigir = document.getElementById("redirigir");
-
-    // selects 
-    let curso= document.getElementById("curso");
+    let curso = document.getElementById("curso");
+    let mensaje = document.getElementById("mensaje");
+    let contador = document.getElementById("contador");
+    let todos = document.getElementById("todos");
+    let ninguno = document.getElementById("ninguno");
 
     // al pulsar sobre la opción añadir curso se solicita que agrege un nuevo curso academico
     curso.addEventListener("change", () => {
@@ -17,6 +18,29 @@ window.addEventListener("DOMContentLoaded", () => {
             curso.insertBefore(crearElemento,curso.lastElementChild);
         }
     } , false);
+
+    // evento para validar si pulso el checkbox "todos"
+    todos.addEventListener("change", function() {
+        let checkboxes = document.querySelectorAll('input[name="diasDisponibles"]');
+        if (this.checked) {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true;
+            });
+        }
+    });
+
+    // evento para validar si pulso el checkbox "ninguno"
+    ninguno.addEventListener("change", function() {
+        let checkboxes = document.querySelectorAll('input[name="diasDisponibles"]');
+        if (this.checked) {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        }
+    });
+
+    // al escribir sobre el textarea el id #contador se ira actualizando
+    mensaje.addEventListener("input", actualizarContador);
 
     // al pulsar el botón se redirige a la página de Google
     redirigir.addEventListener("click", () => {
@@ -31,12 +55,30 @@ window.addEventListener("DOMContentLoaded", () => {
         let nombre = document.getElementById("nombre");
         if(!nombre.checkValidity){
             if(nombre.validity.valueMissing){
-                mostrarErrores(nombre,"El cuadro de texto se encuentra vacío");
                 return false;
             }
         }
         return true;
     }
+
+    // función para validar el textarea
+    function validarTexto() {
+        mensaje.value;
+        // Validar la longitud del texto
+        if (mensaje.length >= 2 && mensaje.length <= 500) {
+            return true;
+        }
+        return false;
+    }
+
+    // funcion para mostrar los caracteres que faltan para llegar a 500
+    function actualizarContador() {
+        let maxLength = 500;
+        let currentLength = mensaje.value.length;
+        let caracteresRestantes = maxLength - currentLength;
+        contador.textContent = caracteresRestantes;
+    }
+
 
      // función para validar la letra del NIF
      function validarLetraNif(element){
@@ -48,16 +90,26 @@ window.addEventListener("DOMContentLoaded", () => {
         return (LETRAS[rest] === letra) ? true : false;
     }
 
-    // función para mostrar los errores
-    function mostrarErrores(element, msg){
-        let errores = document.getElementById("errores");
-        errores.innerHTML = msg;
-        element.className = "error";
-        element.focus();
+    // funcion para comprobar que más de 2 días disponibles se seleccionen
+    function checkSelected() {
+        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let checkedCount = 0;
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkedCount++;
+            }
+        });
+        if (checkedCount >= 2) {
+            return true;
+        }
+        return false;
     }
 
-    function validar(e){
-        console.log(validarLetraNif("50584949Z"));
+    function validar(e) {
+        let nif = document.getElementById("nif").value;
+        if (!checkSelected() || !validarLetraNif(nif) || !validarNombre() || !validarTexto()) {
+            e.preventDefault();
+        }
     }
 
 }, false);
