@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#contenedor-tablero {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    gap: 2px;
+}
+
+.celda {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border: 1px solid #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.bomba {
+    background-color: red;
+    color: white;
+}
+
+.bomba::after {
+    content: "\1F4A3"; /* Código Unicode para el icono de bomba */
+    font-size: 24px;
+}
+
+.bandera::after {
+    content: "\2691"; /* Código Unicode para el icono de bandera */
+    font-size: 24px;
+}
+
+.bandera {
+    background-color: yellow;
+    color: black;
+}
+
+#nuevaPartida {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
