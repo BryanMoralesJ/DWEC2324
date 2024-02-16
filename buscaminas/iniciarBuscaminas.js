@@ -1,6 +1,6 @@
 const tablero = document.getElementById('tablero');
 const nuevaPartidaBtn = document.getElementById('nuevaPartida');
-let juegoEnCurso = true; 
+let juegoEnCurso = true;
 
 nuevaPartidaBtn.addEventListener('click', nuevaPartida);
 
@@ -27,8 +27,8 @@ function nuevaPartida() {
 
 // Aquí voy a validar también si no se encontró ya una bomba, en caso de que juegoEnCurso sea false no se podrá manipular más el tablero
 function investigarCelda(event) {
-  if (!juegoEnCurso) return; 
-  
+  if (!juegoEnCurso) return;
+
   const celda = event.target;
   const x = parseInt(celda.dataset.x);
   const y = parseInt(celda.dataset.y);
@@ -40,7 +40,13 @@ function investigarCelda(event) {
     alert('¡Has perdido!');
   } else {
     const numMinas = calcularNumMinasAlrededor(x, y);
-    celda.textContent = numMinas;
+    celda.classList.add('abierta');
+    if (numMinas === 0) {
+      expandirCeldas(x, y);
+    } else {
+      celda.textContent = numMinas;
+    }
+    verificarVictoria(); // Verificar si todas las celdas no bomba han sido descubiertas
   }
 }
 
@@ -52,9 +58,10 @@ function colocarBandera(event) {
   }
 }
 
-// Lo hice un poco simple, si son pares mete las bombas
 function calcularNumMinas(x, y) {
-  return x % 2 === 0 && y % 2 === 0;
+  const probabilidadBomba = 0.2;
+  const random = Math.random();
+  return random < probabilidadBomba;
 }
 
 function calcularNumMinasAlrededor(x, y) {
@@ -71,6 +78,49 @@ function calcularNumMinasAlrededor(x, y) {
     }
   }
   return numMinas;
+}
+
+function expandirCeldas(x, y) {
+  const celdasPorExpandir = [{ x, y }];
+
+  while (celdasPorExpandir.length > 0) {
+    const { x, y } = celdasPorExpandir.shift();
+    for (let i = x - 1; i <= x + 1; i++) {
+      for (let j = y - 1; j <= y + 1; j++) {
+        if (i >= 0 && i < 8 && j >= 0 && j < 8) {
+          const celda = document.querySelector(`.celda[data-x="${i}"][data-y="${j}"]`);
+          if (!celda.classList.contains('abierta')) {
+            const tieneBomba = calcularNumMinas(i, j);
+            const numMinas = calcularNumMinasAlrededor(i, j);
+            if (!tieneBomba) {
+              celda.classList.add('abierta');
+              if (numMinas === 0) {
+                celdasPorExpandir.push({ x: i, y: j });
+              } else {
+                celda.textContent = numMinas;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function verificarVictoria() {
+  const celdas = document.querySelectorAll('.celda');
+  let todasDescubiertas = true;
+
+  celdas.forEach(celda => {
+    if (!celda.classList.contains('bomba') && !celda.classList.contains('abierta')) {
+      todasDescubiertas = false;
+    }
+  });
+
+  if (todasDescubiertas) {
+    juegoEnCurso = false;
+    alert('¡Has ganado!');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', nuevaPartida);

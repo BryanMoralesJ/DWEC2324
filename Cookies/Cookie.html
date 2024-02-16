@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- TODAS LAS COOKIES LAS MOSTRARE CON UN ALERT -->
+    <button type="button" id="crear">Crear/Modificar Cookie</button>
+    <button type="button" id="leer">Leer Cookie</button>
+    <button type="button" id="borrar">Borrar Cookie</button>
+    <button type="button" id="ver">Ver Todas</button>
+
+    <script>
+
+        let crear = document.getElementById("crear");
+        let leer = document.getElementById("leer");
+        let borrar = document.getElementById("borrar");
+        let ver = document.getElementById("ver");
+
+        crear.addEventListener("click",crearModificarCookie,false);
+        leer.addEventListener("click",leerCookie,false);
+        borrar.addEventListener("click",borrarCookie,false);
+        ver.addEventListener("click",verCookies,false);
+
+        // Crear o modificar la cookie al pulsar el botón
+        function crearModificarCookie() {
+            let nombre = prompt("Introduce el nombre de la cookie:");
+            let valor = prompt("Introduce el valor de la cookie:");
+            let expiracionDias = parseInt(prompt("Introduce el número de días de expiración de la cookie:"));
+            setCookie(nombre, valor, expiracionDias);
+        }
+
+        // leer la cookie al pulsar el botón
+        function leerCookie() {
+            let nombre = prompt("Introduce el nombre de la cookie que quieres leer:");
+            let valor = getCookie(nombre);
+            if (valor) {
+                alert("El valor de la cookie " + nombre + " es: " + valor);
+            } else {
+                alert("La cookie " + nombre + " no existe.");
+            }
+        }
+
+        // borrar la cookie desde el botón
+        function borrarCookie() {
+            let nombre = prompt("Introduce el nombre de la cookie que quieres borrar:");
+            deleteCookie(nombre);
+        }
+
+        // ver todas las cookies
+        function verCookies() {
+            let cookies = document.cookie;
+            alert("Cookies existentes:\n" + cookies);
+        }
+
+        // crear la cookie
+        function setCookie(nombre, valor, expiracionDias) {
+            let fechaExpiracion = new Date();
+            fechaExpiracion.setDate(fechaExpiracion.getDate() + expiracionDias);
+            let cookieValor = escape(valor) + ((expiracionDias == null) ? "" : "; expires=" + fechaExpiracion.toUTCString());
+            document.cookie = nombre + "=" + cookieValor;
+        }
+
+        // Obtener valor de una cookie
+        function getCookie(nombre) {
+            let nombreCookie = nombre + "=";
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1, cookie.length);
+                }
+                if (cookie.indexOf(nombreCookie) == 0) {
+                    return cookie.substring(nombreCookie.length, cookie.length);
+                }
+            }
+            return null;
+        }
+
+        // Borrado de cookies
+        function deleteCookie(nombre) {
+            setCookie(nombre, "", -1);
+        }
+
+    </script>
+</body>
+</html>

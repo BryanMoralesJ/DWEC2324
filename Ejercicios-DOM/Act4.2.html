@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="lista">
+        <li>Primer elemento</li>
+        <li>Segundo elemento</li>
+    </ul>
+
+    <button type="button" id="insertar">Insertar Aleatorio</button>
+
+    <script>
+        let insertar = document.getElementById("insertar");
+        
+        // num aleatorio
+        function generarNumeroRandom() {
+            return Math.random() * 100 + 1;
+        }
+
+        // insertar el elemento dentro de la lista
+        function insertarElemento() {
+            let lista = document.getElementById("lista");
+            let nuevoElemento = document.createElement("li");
+            let numeroAleatorio = generarNumeroRandom();
+            nuevoElemento.textContent = "Elemento " + numeroAleatorio;
+            lista.appendChild(nuevoElemento);
+        }
+
+        insertar.addEventListener("click", insertarElemento,false);
+    </script>
+</body>
+</html>
