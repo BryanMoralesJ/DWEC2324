@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getter y Setter</title>
+  </head>
+  <body>
+    <div id="mensajes"></div>
+    <script>
+      let mensaje = document.getElementById("mensajes");
+
+      class Coche {
+        constructor(marca) {
+          this.marca = marca;
+        }
+
+        anuncio() {
+          return "Ha llegado el nuevo coche de " + this.marca;
+        }
+
+        get marca() {
+          return this._marca;
+        }
+
+        set marca(mar) {
+          this._marca = mar;
+        }
+      }
+
+      class Modelo extends Coche {
+        constructor(marca, modelo) {
+          super(marca);
+          this.modelo = modelo;
+        }
+
+        anuncioCompleto() {
+          return this.anuncio() + ": el modelo " + this.modelo;
+        }
+      }
+
+      // const miCoche = new Coche('Toyota')
+      const miModelo = new Modelo("Hyundai", "Tucson");
+      mensaje.textContent += miModelo.anuncioCompleto();
+    </script>
+  </body>
+</html>
